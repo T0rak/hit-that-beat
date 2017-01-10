@@ -1,0 +1,19 @@
+html
+    header
+        meta(charset="utf-8")
+        link(rel="stylesheet" href="style/normalize.css")
+        link(rel="stylesheet" href="style/login.css")
+        title Music player
+        link(href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css')
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    body
+        h1 Login
+        form(id="connection" method="post")
+
+            label(for="id") Identifier :
+            input(name="id" type="text" id="id" autofocus)
+
+            label(for="pwd") Password : 
+            input(name="pwd" type="password" id="pwd")
+
+            input(name="submit" type="submit" value="Submit")

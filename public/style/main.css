@@ -1,0 +1,489 @@
+*{
+    font-family: "Open Sans", Helvetica, sans-serif;
+    color: #E5E5E5;
+    font-size: 1.01em;
+}
+html{
+    width: 100%;
+    max-width: 100%;
+}
+input, button{
+    color: #353535
+}
+body{
+    background-color: #202020;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#logo{
+    margin: 5px 0 0 10px;
+    float: left;
+}
+h1{
+    font-family: 'Righteous', cursive;
+    height: 44px;
+    font-size: 1.7em;
+    display: inline-block;
+    margin: 12px 0 10px 15px;
+    color: #950000;
+}
+#search{
+    float: right;
+    height: 25px;
+    margin: 10px 4px 0 0;
+    transition: width .7s;
+    width: 15%;
+    max-width: 150px;
+    padding: 0 4px;
+}
+#search::-webkit-input-placeholder {
+   font-style: italic;
+}
+#search:-moz-placeholder {
+   font-style: italic;  
+}
+#search::-moz-placeholder {
+   font-style: italic;  
+}
+#search:-ms-input-placeholder {  
+   font-style: italic; 
+}
+#search:focus{
+    transition: width .7s;
+    width: 16%;
+}
+#execSearch, #home{
+    float: right;
+    width: 25px;
+    margin: 10px 10px 0 0;
+    transition: opacity 1.5s;
+    opacity: .65;
+}
+#musicfields{
+    height: 25px;
+    width: calc(100% - 56px);
+    margin-left: 39px;
+}
+#musicFields div{
+    display: inline-block;
+    margin-right: calc(1% + 39px / 4);
+    transition: color 0.5s;
+    height: calc(100% + 1px);
+}
+
+#musicFields div:hover{
+    cursor: pointer;
+    transition: color 0.3s;
+    color: #AB0000;
+}
+
+#musicList{
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    height: calc(100% - 166px);
+    overflow-y: scroll;
+    margin: 0;
+}
+
+#musicList::-webkit-scrollbar {
+    width: 13px;
+}
+#musicList::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+#musicList::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+#musicList li{
+    height: 29px;
+    width: 100%;
+}
+#musicList li img{
+    width: 29px;
+}
+#musicList li:nth-child(even){
+    background-color: #252525;
+}
+#musicList li:nth-child(odd){
+    background-color: #282828;
+}
+#musicList > li > div{
+    float: left;
+    width: 100%;
+    height: 29px; 
+}
+.musicFields{
+    line-height: 25px;
+    margin-right: 1%;
+    float: left;
+    overflow: hidden;
+    height: 25px;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+.title{
+    width: 26%;
+}
+.artist{
+    width: 19%;
+}
+.album{
+    width: 24%;
+}
+.genre{
+    width: 14%;
+}
+.year{
+    width: 6%;
+}
+#musicList li img{
+    float: left;
+    margin-right: 10px;
+}
+.playMusic:hover{
+    cursor: pointer;
+}
+ul li.playing {
+    background-color:#8A181A !important; 
+}
+
+#controllers{
+    height: 64px;
+    width: 100%;
+    margin: 3px 0;
+}
+.musicController{
+    padding: 2px;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    transition: opacity 1s;
+    opacity: .65;
+}
+.musicController:hover, #execSearch:hover, #home:hover{
+    cursor: pointer;
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+#prev{
+    margin:0;
+}
+#stop{
+    display: none;
+}
+#currentMusic{
+    height: 23px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: calc(100% - 117px);
+}
+#musicProgressPercent{
+    width: 105px;
+    font-size: 0.8em;
+    display: inline-block;
+    text-align: left;
+    margin-left: 10px;
+}
+#musicProgressContainer:hover{
+    cursor: pointer;
+}
+#musicProgressBar{
+    background-color: #8A181A;
+    width: 0px;
+    height: 6px;
+}
+#musicProgressContainer{
+    height: 6px;
+    border: grey solid 1px;
+    width: calc(100% - 117px);
+    display: inline-block;
+}
+#progression{
+    margin: 10px 0;
+    float: left;
+    width: calc(100% - 358px);
+}
+#musicControllers{
+    float: left;
+    margin: 10px 0 0 10px;
+    width: 162px;
+}
+#more_less{
+    display:none;
+}
+#buttonGroup{
+    float: left;
+    margin: 16px 0 0 0;
+    width: 152px;
+}
+#buttonGroup > div, #buttonGroup > div > img{
+    width: 34px;
+    float: left;
+}
+#buttonGroup > div:not(#volumeControllers){
+    margin-left: 25px;
+}
+#buttonGroup > div:hover{
+    cursor: pointer;
+}
+#volumeControle{
+    position: relative;
+    right: 22px;
+    bottom: 79px;
+    display: none;
+}
+.enabled{
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+.disabled{
+    transition: opacity 1s;
+    opacity: 0.3;
+}
+.cssload-container {
+	width: 100%;
+	height: 138px;
+	text-align: center;
+    position: absolute;
+    top: calc(50% - 138px / 2);
+}
+.cssload-zenith {
+	width: 138px;
+	height: 138px;
+	margin: 0 auto;
+	border-radius: 50%;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	box-shadow: 8px 8px 3px #600000;
+	animation: cssload-spin 690ms infinite linear;
+		-o-animation: cssload-spin 690ms infinite linear;
+		-ms-animation: cssload-spin 690ms infinite linear;
+		-webkit-animation: cssload-spin 690ms infinite linear;
+		-moz-animation: cssload-spin 690ms infinite linear;
+}
+@keyframes cssload-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-o-keyframes cssload-spin {
+	100%{ -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-ms-keyframes cssload-spin {
+	100%{ -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-webkit-keyframes cssload-spin {
+	100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-moz-keyframes cssload-spin {
+	100%{ -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+#alertAndroid {
+    font-size: 1.05em;
+    display: none;
+    position: absolute;
+    height: 125px;
+    width: 250px;
+    padding: 0 10px;
+    top: calc(50% - 72.5px);
+    left: calc(50% - 125px);
+    background-color: #222;
+}
+#alertAndroid a{
+    color: #AB0000;
+}
+#closeAndrAlrt{
+    padding : 0 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #DDD;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 0;
+    width: 79px;
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #50555C;
+    background: #50555C;
+    border-radius: 0px;
+    border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 10px;
+    width: 20px;
+    border-radius: 12px;
+    background: #8B0000;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: 0px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #50555C;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #50555C;
+    background: #50555C;
+    border-radius: 11px;
+    border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 10px;
+    width: 20px;
+    border-radius: 12px;
+    background: #8B0000;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #50555C;
+    border: 0px solid #000000;
+    border-radius: 22px;
+    box-shadow: 0px 0px 0px #50555C;
+}
+input[type=range]::-ms-fill-upper {
+    background: #50555C;
+    border: 0px solid #000000;
+    border-radius: 22px;
+    box-shadow: 0px 0px 0px #50555C;
+}
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 10px;
+    width: 20px;
+    border-radius: 12px;
+    background: #8B0000;
+    cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #50555C;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #50555C;
+}
+
+@media screen and (max-height: 400px), screen and (max-width: 940px) {
+    .year{
+        display: none !important;
+    }
+    .title{
+        width: 30%;
+    }
+    musicFields div{
+        margin-right: calc(1% + 39px / 3);
+    }
+    #musicProgressContainer, #musicProgressBar{
+        height: 12px;
+    }
+    #musicProgressContainer{
+        margin-top: 3px;
+        float: left;
+    }
+    #buttonGroup{
+        display: inline-block;
+        position: absolute;
+        top: calc(50% - 26px);
+        right: -152px;
+        transition: right 0.5s;
+        background-color: rgba(30, 30, 30, 0.8);        
+        padding: 3px 0 3px 15px;
+    }
+    #progression{
+        width: calc(100% - 172px);
+    }
+    #more_less{
+        position: absolute;
+        top: calc(50% - 10px);
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        transition: right 0.49s;
+        background-color: rgba(30, 30, 30, 0.8);
+        display: inline-block;
+        cursor: pointer;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+    #more_less.extanded{
+        transform: rotate(180deg);
+        right: 182px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        transition: right 0.53s;        
+    }
+    #buttonGroup.extanded:last-child{
+        padding-right: 20px;
+    }
+    #buttonGroup.extanded{
+        right: -5px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .genre{
+        display: none !important;
+    }
+    .album{
+        display: none !important;
+    }
+    .title{
+        width: 49%;
+    }
+    .artist{
+        width: calc(38% - 8px);
+    }
+    h1{
+        font-size: 1.3em;
+    }
+    #musicFields .title{
+        margin-right: calc(1% + 19px);
+    }
+    #musicFields .artist{
+        margin-right: 0;
+    }
+    #logo{
+        display:none;
+    }
+}

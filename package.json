@@ -1,0 +1,31 @@
+{
+  "name": "new_music_player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "app": "node app.js"
+  },
+  "author": "Thierry Flück",
+  "license": "ISC",
+  "dependencies": {
+    "@types/body-parser": "0.0.33",
+    "@types/express": "^4.0.34",
+    "@types/graceful-fs": "^2.0.29",
+    "@types/mongoose": "^4.7.2",
+    "@types/musicmetadata": "^2.0.2",
+    "@types/serve-favicon": "^2.2.28",
+    "@types/socket.io": "^1.4.27",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "graceful-fs": "^4.1.11",
+    "mongoose": "^4.7.6",
+    "musicmetadata": "^2.0.5",
+    "pug": "^2.0.0-beta3",
+    "serve-favicon": "^2.3.2",
+    "session-file-store": "^1.0.0",
+    "socket.io": "^1.7.2",
+    "socket.io-express-session": "^0.1.3"
+  }
+}

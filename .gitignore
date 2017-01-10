@@ -1,0 +1,9 @@
+public/script/*.js
+app.js
+node_modules/
+typings/
+public/musics/
+tmp/sessions/
+music_player_cordova/Hit that beat/platforms/
+music_player_cordova/Hit that beat/plugins/cordova-plugin-whitelist/NOTICE
+music_player_cordova/Hit that beat/plugins/

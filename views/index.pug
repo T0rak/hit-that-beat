@@ -1,0 +1,55 @@
+html
+    head
+        meta(charset="utf-8")
+        title Hit that beat
+        link(rel="stylesheet" href="style/normalize.css")
+        link(href='https://fonts.googleapis.com/css?family=Open+Sans|Righteous' rel='stylesheet' type='text/css')
+        link(rel="stylesheet" href="style/main.css")
+        meta(name="viewport" content="initial-scale=1, maximum-scale=1")
+    body
+        header
+            img(id="logo" src="images/icons/logov2.png" width="50px")
+            h1 Hit that beat
+            img(src="images/icons/home.png" id="home" title="Load every musics")
+            img(src="images/icons/search.png" id="execSearch")
+            input(id="search" type="text" placeholder="Search...")
+        audio(id="audioPlayer")
+        div(id="musicfields")
+            div(class="title" title="Sort by title") Title
+            div(class="artist" title="Sort by artist") Artist
+            div(class="album" title="Sort by album") Album
+            div(class="genre" title="Sort by genre") Genre
+            div(class="year" title="Sort by year") Year
+        ul(id="musicList")
+        div(id="controllers")
+            div(id="musicControllers")
+                img(id="prev" class="musicController" src="images/icons/previous.png")
+                img(id="play" class="musicController" src="images/icons/play.png")
+                button(id="stop" class="musicController") Stop
+                img(id="next" class="musicController" src="images/icons/next.png")
+            div(id="progression")
+                div(id="currentMusic") Loading...
+                div(id="musicProgressContainer")
+                    div(id="musicProgressBar")
+                div(id="musicProgressPercent") -:-
+            
+            img(src="images/icons/more_less.png" id="more_less")
+            div(id="buttonGroup")
+                div(id="volumeControllers" title="Mute/Unmute")
+                    img(src="images/icons/volume.png" id="volumeManager" class="enabled")
+                    input(id="volumeControle" type="range" step="0.001" max="1" min="0")
+                div(id="shuffleController" title="Shuffle On/Off")
+                    img(src="images/icons/shuffle.png" id="shuffleButton" class="disabled")
+                div(id="repeatController" title="Repeat On/Off")
+                    img(src="images/icons/repeat.png" id="repeatButton" class="disabled")
+                
+        div(id="loader" class="cssload-container")
+            div(class="cssload-zenith")
+        div(id="alertAndroid")
+            p You can download the android app by clicking 
+                a(href="apk/android-debug.apk") here
+                |.
+            button(id="closeAndrAlrt") No thanks !
+        footer
+            script(type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js")
+            script(type="text/javascript" src="script/index.js")

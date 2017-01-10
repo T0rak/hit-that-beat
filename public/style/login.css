@@ -1,0 +1,32 @@
+body{
+    font-family: "Open Sans", Helvetica, sans-serif;
+    background-color: #202020;
+    color: #EEE;
+    height: 270px;
+    width: 275px;
+    position: fixed;
+    top: calc(50% - 320px / 2);
+    left: calc(50% - 300px / 2)
+}
+h1{
+    margin: 0 0 10px 0;
+}
+form{
+    font-size: 1.2em;
+    margin: 0;
+}
+input{
+    width: 100%;
+    margin-bottom: 30px;
+    height: 30px;
+}
+input[type="submit"]{
+    width: 70%;
+    margin: 0 calc(30% / 2);
+}
+
+@media screen and (max-height: 400px), screen and (max-width: 940px) {
+    body{
+        top: 0px;
+    }
+}
