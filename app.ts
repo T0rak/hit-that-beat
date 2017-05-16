@@ -7,10 +7,13 @@ import * as eventEmitter from "events";
 import * as mongoose from "mongoose";
 import * as serve_favicon from "serve-favicon";
 import * as bodyParser from "body-parser";
+import * as Session from "express-session";
+import * as sessionStorage from "session-file-store";
+import * as ios from "socket.io-express-session";
 
 let app = express();
 let server = http.createServer(app);
-let io = require("socket.io")(server);
+let io = SocketIo(server);
 
 app.use(serve_favicon(__dirname + "/public/images/icons/logov2.png"));
 let config = {
@@ -19,26 +22,11 @@ let config = {
     musicFolderPath: __dirname + "/public/musics"
 };
 
-interface track {
-    _id: string,
-    title: string,
-    titleLC: string,
-    artist: string[],
-    albumartist: string[],
-    album: string,
-    year: string,
-    track: { no: number, of: number },
-    genre: string[],
-    disk: { no: number, of: number },
-    picture: [{ format: string, data: Buffer }],
-    duration: number,
-    path: string
+interface Track extends MM.Metadata {
+    _id?: string,
+    titleLC?: string,
+    path?: string
 };
-
-//Sessions
-
-import * as Session from "express-session";
-import * as sessionStorage from "session-file-store";
 
 // initializing express-session middleware
 let SessionStore = sessionStorage(Session);
@@ -52,7 +40,6 @@ let session = Session({
 
 app.use(session);
 
-import * as ios from "socket.io-express-session";
 io.use(ios(session));
 
 app.use(express.static(__dirname + "/public"));
@@ -91,7 +78,7 @@ io.on("connection", (socket) => {
     console.log("A user has connected !");
 
     socket.on("search", (params) => {
-        if(socket.handshake.session.uid){
+        if((socket.handshake as any).session.uid){
             Music.find(
                 {
                     $or: [
@@ -116,7 +103,7 @@ io.on("connection", (socket) => {
         }
     });
     socket.on("searchMusicById", (param) => {
-        if(socket.handshake.session.uid){
+        if((socket.handshake as any).session.uid){
             Music.findOne({ "_id": param }, "title artist path", (err, result) => {
                 if (err) console.error(err);
                 else {
@@ -167,7 +154,7 @@ function countFiles(folderPath: string, nbFiles?: number[]) {
     [@param: callback: Function -> function to execute at the end of the files reading]
     @return: void
 */
-function generateMusicFolderJson(musicFolderPath: string, tracks?: track[], callback?: Function): void {
+function generateMusicFolderJson(musicFolderPath: string, tracks?: Track[], callback?: Function): void {
     tracks = tracks == undefined ? [] : tracks;
     gracefulFS.readdir(musicFolderPath, (err, items) => {
         if (err) {
@@ -182,7 +169,7 @@ function generateMusicFolderJson(musicFolderPath: string, tracks?: track[], call
                     let splittedName = item.split(".");
                     if (validExtensions.indexOf(splittedName[splittedName.length - 1].toLowerCase()) != -1) {
                         let fileRS = gracefulFS.createReadStream(itemPath);
-                        mm(fileRS, /*{duration: true},*/(err, metadata) => {
+                        mm(fileRS, /*{duration: true},*/(err, metadata: Track) => {
                             if (err) {
                                 console.log(readFiles + ": " + itemPath);
                                 emitter.emit("closeFile");
@@ -215,7 +202,7 @@ function generateMusicFolderJson(musicFolderPath: string, tracks?: track[], call
                                         metadata.title = item.trim();
                                     }
                                 }
-                                let newTrack: track = metadata;
+                                let newTrack: Track = metadata;
                                 tracks[tracks.length] = newTrack;
                                 //console.log(readFiles + ": " + itemPath);
                                 emitter.emit("closeFile");
@@ -285,7 +272,7 @@ function insertMusicsData() {
                 console.error(err);
             } else {
                 let truc = JSON.parse(data.toString());
-                truc.forEach((music: track) => {
+                truc.forEach((music: Track) => {
 
                     //Il faudra voir pour le gérer sur la base de donnée après chaque insertion
                     music.titleLC = music.title.toLowerCase();
